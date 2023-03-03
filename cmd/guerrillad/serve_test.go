@@ -17,11 +17,11 @@ import (
 	"testing"
 	"time"
 
-	"github.com/flashmob/go-guerrilla"
-	"github.com/flashmob/go-guerrilla/backends"
-	"github.com/flashmob/go-guerrilla/log"
-	test "github.com/flashmob/go-guerrilla/tests"
-	"github.com/flashmob/go-guerrilla/tests/testcert"
+	"github.com/fuguohong1024/go-guerrilla"
+	"github.com/fuguohong1024/go-guerrilla/backends"
+	"github.com/fuguohong1024/go-guerrilla/log"
+	test "github.com/fuguohong1024/go-guerrilla/tests"
+	"github.com/fuguohong1024/go-guerrilla/tests/testcert"
 	"github.com/spf13/cobra"
 )
 
@@ -342,7 +342,6 @@ var grepNotFound error
 // error otherwise
 //
 // It will attempt to search the log multiple times, pausing loner for each re-try
-//
 func grepTestlog(match string, lineNumber int) (found int, err error) {
 	found = 0
 	fd, err := os.Open("../../tests/testlog")

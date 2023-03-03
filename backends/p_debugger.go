@@ -1,7 +1,7 @@
 package backends
 
 import (
-	"github.com/flashmob/go-guerrilla/mail"
+	"github.com/fuguohong1024/go-guerrilla/mail"
 	"strings"
 	"time"
 )
@@ -46,6 +46,7 @@ func Debugger() Decorator {
 				if config.LogReceivedMails {
 					Log().Infof("Mail from: %s / to: %v", e.MailFrom.String(), e.RcptTo)
 					Log().Info("Headers are:", e.Header)
+					Log().Infof("Mail context:\n%s", e.MailText())
 				}
 
 				if config.SleepSec > 0 {

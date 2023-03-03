@@ -1,7 +1,7 @@
 package encoding
 
 import (
-	"github.com/flashmob/go-guerrilla/mail"
+	"github.com/fuguohong1024/go-guerrilla/mail"
 	"strings"
 	"testing"
 )
@@ -23,6 +23,12 @@ func TestEncodingMimeHeaderDecode(t *testing.T) {
 		t.Error("expecting André Pirard, got:", str)
 
 	}
+
+}
+
+func TestEncodingMsg(t *testing.T) {
+	str := mail.MimeHeaderDecode("=?UTF-8?B?44CQQ2FuZHnjgJF2ZXJpZmljYXRpb24gY29kZQ==?=")
+	t.Log(str)
 
 }
 

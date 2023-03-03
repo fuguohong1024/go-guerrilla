@@ -135,7 +135,7 @@ Go-Guerrilla can be imported and used as a package in your Go project.
 #### 1. Import the guerrilla package
 ```go
 import (
-    "github.com/flashmob/go-guerrilla"
+    "github.com/fuguohong1024/go-guerrilla"
 )
 
 

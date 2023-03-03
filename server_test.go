@@ -14,10 +14,10 @@ import (
 	"io/ioutil"
 	"net"
 
-	"github.com/flashmob/go-guerrilla/backends"
-	"github.com/flashmob/go-guerrilla/log"
-	"github.com/flashmob/go-guerrilla/mail"
-	"github.com/flashmob/go-guerrilla/mocks"
+	"github.com/fuguohong1024/go-guerrilla/backends"
+	"github.com/fuguohong1024/go-guerrilla/log"
+	"github.com/fuguohong1024/go-guerrilla/mail"
+	"github.com/fuguohong1024/go-guerrilla/mocks"
 )
 
 // getMockServerConfig gets a mock ServerConfig struct used for creating a new server

@@ -6,6 +6,7 @@ import (
 	"crypto/md5"
 	"errors"
 	"fmt"
+	"github.com/jhillyerd/enmime"
 	"io"
 	"mime"
 	"net"
@@ -14,7 +15,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/flashmob/go-guerrilla/mail/rfc5321"
+	"github.com/fuguohong1024/go-guerrilla/mail/rfc5321"
 )
 
 // A WordDecoder decodes MIME headers containing RFC 2047 encoded-words.
@@ -206,6 +207,30 @@ func (e *Envelope) NewReader() io.Reader {
 		strings.NewReader(e.DeliveryHeader),
 		bytes.NewReader(e.Data.Bytes()),
 	)
+}
+
+func (e *Envelope) MailText() string {
+	context := strings.Builder{}
+	r := bytes.NewReader(e.Data.Bytes())
+	env, err := enmime.ReadEnvelope(r)
+	if err != nil {
+		return ""
+	}
+	context.WriteString(fmt.Sprintf("From: %v\n", env.GetHeader("From")))
+	alist, _ := env.AddressList("To")
+	for _, addr := range alist {
+		context.WriteString(fmt.Sprintf("To: %s <%s>\n", addr.Name, addr.Address))
+	}
+
+	// enmime can decode quoted-printable headers.
+	context.WriteString(fmt.Sprintf("Subject: %v\n", env.GetHeader("Subject")))
+
+	// The plain text body is available as mime.Text.
+	context.WriteString(fmt.Sprintf("Text Body Lens: %v chars\n", len(env.Text)))
+
+	context.WriteString(fmt.Sprintf("Text Body: %s\n", env.Text))
+	return context.String()
+
 }
 
 // String converts the email to string.

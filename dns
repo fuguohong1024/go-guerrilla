@@ -1,5 +1,0 @@
-mdns5.hostwindsdns.com
-mdns6.hostwindsdns.com
-
-
-rpm -qa|grep yum|xargs rpm -ev --allmatches --nodeps
